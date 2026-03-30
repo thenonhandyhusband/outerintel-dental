@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Competitive Intelligence Report — Riverside Family Dentistry | Outer Intel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────── */
+    :root {
+      --accent:      #0D9488;
+      --accent-light:#CCFBF1;
+      --accent-dark: #0A7A70;
+      --navy:        #0D1B35;
+      --navy-mid:    #152747;
+      --navy-light:  #1E3A5F;
+      --amber:       #D97706;
+      --amber-light: #FEF3C7;
+      --red:         #DC2626;
+      --red-light:   #FEE2E2;
+      --gray-50:     #F8FAFC;
+      --gray-100:    #F1F5F9;
+      --gray-200:    #E2E8F0;
+      --gray-400:    #94A3B8;
+      --gray-600:    #475569;
+      --gray-800:    #1E293B;
+      --white:       #FFFFFF;
+      --font-head:   'Playfair Display', Georgia, serif;
+      --font-body:   'DM Sans', system-ui, sans-serif;
+      --max-w:       900px;
+      --radius:      8px;
+      --shadow-sm:   0 1px 3px rgba(13,27,53,0.08), 0 1px 2px rgba(13,27,53,0.05);
+      --shadow-md:   0 4px 12px rgba(13,27,53,0.12), 0 2px 4px rgba(13,27,53,0.06);
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--gray-100);
+      color: var(--gray-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Layout ────────────────────────────────────────────────── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+
+    .section {
+      padding: 56px 48px;
+    }
+
+    .section--alt {
+      background: var(--gray-50);
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 40px 24px; }
+    }
+
+    /* ─── Typography ────────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    h2.section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    h2.section-title span.section-num {
+      color: var(--accent);
+    }
+
+    p { margin-bottom: 1em; }
+    p:last-child { margin-bottom: 0; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Cover / Header ────────────────────────────────────────── */
+    .cover {
+      background: var(--navy);
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(13,148,136,0.08);
+      pointer-events: none;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 30%;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(13,148,136,0.05);
+      pointer-events: none;
+    }
+
+    .cover__back-link {
+      display: inline-block;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+    .cover__back-link:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .cover__back-link::before { content: '← '; }
+
+    .cover__logo {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .cover__logo strong {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .cover__badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(13,148,136,0.15);
+      border: 1px solid rgba(13,148,136,0.35);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .cover__title {
+      font-family: var(--font-head);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .cover__practice {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+
+    .cover__meta {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+
+    .cover__scope {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .cover__scope::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .cover { padding: 40px 24px 36px; }
+      .cover__title { font-size: 1.75rem; }
+    }
+
+    /* ─── Executive Summary ─────────────────────────────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 700px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    .summary-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-sm);
+      border-top: 3px solid var(--accent);
+    }
+
+    .summary-card--amber { border-top-color: var(--amber); }
+    .summary-card--teal  { border-top-color: var(--accent); }
+
+    .summary-card__label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+
+    .summary-card__value {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .summary-card--amber .summary-card__value { color: var(--amber); }
+    .summary-card--teal  .summary-card__value { color: var(--accent-dark); }
+
+    .summary-card__desc {
+      font-size: 0.8125rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ─── Insight Callout ───────────────────────────────────────── */
+    .insight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin-top: 24px;
+      font-size: 0.875rem;
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    .insight__label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* ─── Bar Chart (CSS-only) ──────────────────────────────────── */
+    .chart {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 44px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    @media (max-width: 580px) {
+      .chart-row { grid-template-columns: 140px 1fr 36px; }
+    }
+
+    .chart-row__label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-800);
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chart-row__label--you {
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    .chart-row__bar-track {
+      background: var(--gray-100);
+      border-radius: 4px;
+      height: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-row__bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      transition: width 0.3s ease;
+    }
+
+    .chart-row__bar-fill--you {
+      background: var(--amber);
+    }
+
+    .chart-row__count {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      text-align: left;
+    }
+
+    .chart-note {
+      margin-top: 16px;
+      font-size: 0.8125rem;
+      color: var(--gray-600);
+      font-style: italic;
+    }
+
+    /* ─── Sentiment Bars ────────────────────────────────────────── */
+    .sentiment-grid {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sentiment-row__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .sentiment-row__name {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .sentiment-row__pct {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+
+    .sentiment-row__pct--amber { color: var(--amber); }
+    .sentiment-row__pct--red   { color: var(--red); }
+
+    .sentiment-track {
+      background: var(--gray-200);
+      border-radius: 100px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .sentiment-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: var(--accent);
+    }
+
+    .sentiment-fill--amber { background: var(--amber); }
+    .sentiment-fill--red   { background: var(--red); }
+
+    .sentiment-flag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .flag--amber {
+      background: var(--amber-light);
+      color: #92400E;
+    }
+
+    .flag--red {
+      background: var(--red-light);
+      color: #991B1B;
+    }
+
+    /* ─── Service Gap Table ─────────────────────────────────────── */
+    .gap-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+      font-size: 0.875rem;
+    }
+
+    .gap-table thead th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 16px;
+      text-align: left;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+    }
+
+    .gap-table thead th:first-child { border-radius: var(--radius) 0 0 0; }
+    .gap-table thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
+
+    .gap-table tbody tr {
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .gap-table tbody tr:last-child { border-bottom: none; }
+
+    .gap-table tbody tr:nth-child(even) {
+      background: var(--gray-50);
+    }
+
+    .gap-table tbody td {
+      padding: 14px 16px;
+      vertical-align: top;
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+
+    .gap-table tbody td:first-child {
+      font-weight: 600;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .gap-table tbody td:last-child {
+      color: var(--accent-dark);
+    }
+
+    .td-opportunity {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .td-opportunity::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    @media (max-width: 640px) {
+      .gap-table thead { display: none; }
+      .gap-table tbody td {
+        display: block;
+        padding: 8px 12px;
+      }
+      .gap-table tbody td:first-child {
+        background: var(--navy-mid);
+        color: var(--white);
+        padding: 10px 12px;
+      }
+      .gap-table tbody tr {
+        display: block;
+        margin-bottom: 12px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--gray-200);
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .gap-table tbody td::before {
+        content: attr(data-label) ': ';
+        font-weight: 600;
+        color: var(--gray-600);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .gap-table tbody td:first-child::before { display: none; }
+    }
+
+    /* ─── Keyword Grid ──────────────────────────────────────────── */
+    .keyword-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 560px) {
+      .keyword-cols { grid-template-columns: 1fr; }
+    }
+
+    .keyword-panel {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .keyword-panel__title {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .keyword-panel--positive .keyword-panel__title { color: var(--accent); }
+    .keyword-panel--negative .keyword-panel__title { color: var(--red); }
+
+    .keyword-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .keyword-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9375rem;
+    }
+
+    .keyword-list li .kw-phrase {
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+
+    .keyword-list li .kw-phrase::before {
+      content: '"';
+      color: var(--gray-400);
+      font-family: var(--font-head);
+    }
+    .keyword-list li .kw-phrase::after {
+      content: '"';
+      color: var(--gray-400);
+      font-family: var(--font-head);
+    }
+
+    .kw-count {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+
+    .keyword-panel--positive .kw-count {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+    }
+
+    .keyword-panel--negative .kw-count {
+      background: var(--red-light);
+      color: #991B1B;
+    }
+
+    /* ─── Action Checklist ──────────────────────────────────────── */
+    .action-tiers {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .tier {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tier__header {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tier--quick .tier__header   { background: var(--accent); }
+    .tier--medium .tier__header  { background: var(--amber); }
+    .tier--strategic .tier__header { background: var(--navy-mid); }
+
+    .tier__badge {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .tier__timeframe {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .tier__body {
+      background: var(--white);
+      padding: 20px 24px;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9375rem;
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+
+    .checklist li .check-box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--gray-300);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ─── Report Footer ─────────────────────────────────────────── */
+    .report-footer {
+      background: var(--navy);
+      padding: 48px 48px;
+    }
+
+    .footer-cta {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .footer-cta__heading {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .footer-cta__sub {
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s;
+      letter-spacing: 0.01em;
+    }
+    .btn-cta:hover {
+      background: var(--accent-dark);
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 28px 0;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-meta__disclaimer {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    .footer-meta__brand {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .footer-meta__brand strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .report-footer { padding: 40px 24px; }
+      .footer-meta { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ─── Section sub-label ─────────────────────────────────────── */
+    .section-sublabel {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+
+    /* ─── Print Styles ──────────────────────────────────────────── */
+    @media print {
+      body { background: white; }
+      .page-wrap { box-shadow: none; }
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .tier__header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .report-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ════════════════════════════════════════════════
+       COVER BANNER
+  ════════════════════════════════════════════════ -->
+  <header class="cover">
+    <a class="cover__back-link" href="https://dental.outerintel.com">Back to Dental</a>
+    <div class="cover__logo">Outer<strong>Intel</strong></div>
+    <div class="cover__badge">Competitive Intelligence Report</div>
+    <h1 class="cover__title">Dental Competitive<br>Intelligence Report</h1>
+    <p class="cover__practice">Riverside Family Dentistry — Austin, TX</p>
+    <p class="cover__meta">Q1 2025 &nbsp;·&nbsp; Prepared by Outer Intel</p>
+    <div class="cover__scope">
+      Analyzing 847 competitor reviews across 6 practices within 8 miles
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════════════
+       EXECUTIVE SUMMARY
+  ════════════════════════════════════════════════ -->
+  <section class="section section--alt" aria-labelledby="exec-summary-heading">
+    <h2 class="section-title" id="exec-summary-heading">Executive Summary</h2>
+    <p class="section-sublabel">Key findings at a glance — the three signals that matter most for your practice right now.</p>
+
+    <div class="summary-grid" role="list">
+
+      <div class="summary-card summary-card--teal" role="listitem">
+        <div class="summary-card__label">Overall Standing</div>
+        <div class="summary-card__value">Opportunity Score: 74/100</div>
+        <p class="summary-card__desc">Above-average gap between your market position and your top competitor's review velocity. Significant room to close ground quickly.</p>
+      </div>
+
+      <div class="summary-card summary-card--amber" role="listitem">
+        <div class="summary-card__label">Top Risk</div>
+        <div class="summary-card__value">Wait Times</div>
+        <p class="summary-card__desc">31% of 1-star reviews at CrossTown Dental cite wait times — a preventable complaint you can differentiate on before they fix it.</p>
+      </div>
+
+      <div class="summary-card summary-card--teal" role="listitem">
+        <div class="summary-card__label">Quick Win</div>
+        <div class="summary-card__value">Google Response Rate</div>
+        <p class="summary-card__desc">Competitors are responding to reviews 3+ days late on average. A 24-hour response policy could set you apart in Google's ranking signals.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       SECTION 1: REVIEW VELOCITY
+  ════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="velocity-heading">
+    <h2 class="section-title" id="velocity-heading">
+      <span class="section-num">1.</span> Competitor Review Velocity — Last 90 Days
+    </h2>
+    <p class="section-sublabel">New Google reviews acquired between Jan 1 – Mar 15, 2025. Higher velocity correlates with Local Pack ranking lift.</p>
+
+    <div class="chart" role="list" aria-label="Review velocity bar chart — new reviews in last 90 days">
+
+      <div class="chart-row" role="listitem">
+        <div class="chart-row__label" id="bar-label-1">CrossTown Dental</div>
+        <div class="chart-row__bar-track">
+          <div class="chart-row__bar-fill" style="width: 100%;" aria-label="CrossTown Dental: 34 reviews" role="img"></div>
+        </div>
+        <div class="chart-row__count" aria-hidden="true">34</div>
+      </div>
+
+      <div class="chart-row" role="listitem">
+        <div class="chart-row__label" id="bar-label-2">Smile Studio ATX</div>
+        <div class="chart-row__bar-track">
+          <div class="chart-row__bar-fill" style="width: 82%;" aria-label="Smile Studio ATX: 28 reviews" role="img"></div>
+        </div>
+        <div class="chart-row__count" aria-hidden="true">28</div>
+      </div>
+
+      <div class="chart-row" role="listitem">
+        <div class="chart-row__label" id="bar-label-3">Downtown Dental Co.</div>
+        <div class="chart-row__bar-track">
+          <div class="chart-row__bar-fill" style="width: 56%;" aria-label="Downtown Dental Co: 19 reviews" role="img"></div>
+        </div>
+        <div class="chart-row__count" aria-hidden="true">19</div>
+      </div>
+
+      <div class="chart-row" role="listitem">
+        <div class="chart-row__label chart-row__label--you" id="bar-label-4">Riverside Family (YOU)</div>
+        <div class="chart-row__bar-track">
+          <div class="chart-row__bar-fill chart-row__bar-fill--you" style="width: 35%;" aria-label="Riverside Family Dentistry (your practice): 12 reviews" role="img"></div>
+        </div>
+        <div class="chart-row__count" aria-hidden="true">12</div>
+      </div>
+
+      <div class="chart-row" role="listitem">
+        <div class="chart-row__label" id="bar-label-5">AustinDental.com</div>
+        <div class="chart-row__bar-track">
+          <div class="chart-row__bar-fill" style="width: 32%;" aria-label="AustinDental.com: 11 reviews" role="img"></div>
+        </div>
+        <div class="chart-row__count" aria-hidden="true">11</div>
+      </div>
+
+      <div class="chart-row" role="listitem">
+        <div class="chart-row__label" id="bar-label-6">Cedar Ridge Smiles</div>
+        <div class="chart-row__bar-track">
+          <div class="chart-row__bar-fill" style="width: 24%;" aria-label="Cedar Ridge Smiles: 8 reviews" role="img"></div>
+        </div>
+        <div class="chart-row__count" aria-hidden="true">8</div>
+      </div>
+
+    </div>
+
+    <p class="chart-note">
+      Amber bar = your practice. Velocity gap: CrossTown Dental is outpacing you <strong>2.8×</strong> in new review acquisition.
+    </p>
+
+    <div class="insight">
+      <span class="insight__label">Why This Matters</span>
+      Practices with higher review velocity rank higher in the Google Maps local pack. At current rates, CrossTown Dental will double their review count lead within 6 months — making it increasingly difficult and expensive to recapture position organically.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       SECTION 2: SENTIMENT BREAKDOWN
+  ════════════════════════════════════════════════ -->
+  <section class="section section--alt" aria-labelledby="sentiment-heading">
+    <h2 class="section-title" id="sentiment-heading">
+      <span class="section-num">2.</span> Sentiment Analysis by Category
+    </h2>
+    <p class="section-sublabel">Top positive themes across all 847 competitor reviews analyzed. Percentage reflects share of mentions that are net positive.</p>
+
+    <div class="sentiment-grid" role="list">
+
+      <div role="listitem">
+        <div class="sentiment-row__header">
+          <span class="sentiment-row__name">Staff Friendliness</span>
+          <span class="sentiment-row__pct">78% positive</span>
+        </div>
+        <div class="sentiment-track" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Staff Friendliness: 78% positive">
+          <div class="sentiment-fill" style="width: 78%;"></div>
+        </div>
+      </div>
+
+      <div role="listitem">
+        <div class="sentiment-row__header">
+          <span class="sentiment-row__name">
+            Appointment Availability
+            <span class="sentiment-flag flag--amber">Flagged</span>
+          </span>
+          <span class="sentiment-row__pct sentiment-row__pct--amber">52% positive</span>
+        </div>
+        <div class="sentiment-track" role="progressbar" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" aria-label="Appointment Availability: 52% positive — flagged as at-risk">
+          <div class="sentiment-fill sentiment-fill--amber" style="width: 52%;"></div>
+        </div>
+      </div>
+
+      <div role="listitem">
+        <div class="sentiment-row__header">
+          <span class="sentiment-row__name">Procedure Explanation</span>
+          <span class="sentiment-row__pct">71% positive</span>
+        </div>
+        <div class="sentiment-track" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" aria-label="Procedure Explanation: 71% positive">
+          <div class="sentiment-fill" style="width: 71%;"></div>
+        </div>
+      </div>
+
+      <div role="listitem">
+        <div class="sentiment-row__header">
+          <span class="sentiment-row__name">
+            Wait Times
+            <span class="sentiment-flag flag--red">High Risk</span>
+          </span>
+          <span class="sentiment-row__pct sentiment-row__pct--red">38% positive</span>
+        </div>
+        <div class="sentiment-track" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="Wait Times: 38% positive — high risk category">
+          <div class="sentiment-fill sentiment-fill--red" style="width: 38%;"></div>
+        </div>
+      </div>
+
+      <div role="listitem">
+        <div class="sentiment-row__header">
+          <span class="sentiment-row__name">Payment / Insurance</span>
+          <span class="sentiment-row__pct">61% positive</span>
+        </div>
+        <div class="sentiment-track" role="progressbar" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100" aria-label="Payment and Insurance: 61% positive">
+          <div class="sentiment-fill" style="width: 61%;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      <span class="insight__label">Key Takeaway</span>
+      Wait times are the #1 complaint driver across all 6 practices in your market. If you can differentiate on speed and transparency — even just by communicating delays proactively — positive reviews will follow.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       SECTION 3: SERVICE GAP ANALYSIS
+  ════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="service-gap-heading">
+    <h2 class="section-title" id="service-gap-heading">
+      <span class="section-num">3.</span> Service-Level Sentiment — Where Competitors Win and Lose
+    </h2>
+    <p class="section-sublabel">Breakdown of how specific service lines are discussed across all competitor reviews, and where gaps exist for Riverside Family Dentistry.</p>
+
+    <table class="gap-table" aria-label="Service gap analysis comparing competitor strengths to your opportunities">
+      <thead>
+        <tr>
+          <th scope="col">Service</th>
+          <th scope="col">Competitor Strength</th>
+          <th scope="col">Your Opportunity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Service">Teeth Whitening</td>
+          <td data-label="Competitor Strength">High praise at Smile Studio ATX — 89 positive mentions in the analysis period</td>
+          <td data-label="Your Opportunity"><span class="td-opportunity">No differentiated whitening messaging in your current reviews. Easy positioning gap to capture.</span></td>
+        </tr>
+        <tr>
+          <td data-label="Service">Implants</td>
+          <td data-label="Competitor Strength">CrossTown Dental has 12 implant-specific 5-star reviews in the last 90 days alone</td>
+          <td data-label="Your Opportunity"><span class="td-opportunity">Zero implant mentions in your last 30 reviews — clear SEO and positioning gap losing high-value patients</span></td>
+        </tr>
+        <tr>
+          <td data-label="Service">Invisalign / Aligners</td>
+          <td data-label="Competitor Strength">Downtown Dental Co has strong aligner sentiment and growing review share in this segment</td>
+          <td data-label="Your Opportunity"><span class="td-opportunity">Opportunity to capture patients researching alternatives to wire braces; underserved in local search</span></td>
+        </tr>
+        <tr>
+          <td data-label="Service">Cleanings</td>
+          <td data-label="Competitor Strength">Table stakes — all 6 practices rated 4.2+ on cleaning quality</td>
+          <td data-label="Your Opportunity"><span class="td-opportunity">Differentiate on hygienist consistency and time efficiency rather than competing on basic quality claims</span></td>
+        </tr>
+        <tr>
+          <td data-label="Service">Emergency Dental</td>
+          <td data-label="Competitor Strength">Major gap — only 1 practice explicitly mentions same-day availability in their profile or reviews</td>
+          <td data-label="Your Opportunity"><span class="td-opportunity">High-value positioning opportunity if you offer same-day slots; patients in pain convert immediately</span></td>
+        </tr>
+        <tr>
+          <td data-label="Service">Kids / Family Dentistry</td>
+          <td data-label="Competitor Strength">Cedar Ridge Smiles dominates pediatric sentiment with consistent praise from parents</td>
+          <td data-label="Your Opportunity"><span class="td-opportunity">Not a current competitive threat unless you actively target families — focus energy on higher-margin segments first</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       SECTION 4: KEYWORD OPPORTUNITY GRID
+  ════════════════════════════════════════════════ -->
+  <section class="section section--alt" aria-labelledby="keyword-heading">
+    <h2 class="section-title" id="keyword-heading">
+      <span class="section-num">4.</span> Keyword Intelligence — What Patients Say About 5-Star Experiences
+    </h2>
+    <p class="section-sublabel">Recurring phrases extracted from 847 reviews across all 6 practices. These are the words patients use when they love — or leave — a dental practice.</p>
+
+    <div class="keyword-cols">
+
+      <div class="keyword-panel keyword-panel--positive">
+        <div class="keyword-panel__title">Top phrases in 5-star reviews</div>
+        <ul class="keyword-list">
+          <li>
+            <span class="kw-phrase">gentle dentist</span>
+            <span class="kw-count">47 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">explained everything</span>
+            <span class="kw-count">38 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">no judgment</span>
+            <span class="kw-count">29 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">quick appointment</span>
+            <span class="kw-count">24 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">actually listened</span>
+            <span class="kw-count">19 mentions</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="keyword-panel keyword-panel--negative">
+        <div class="keyword-panel__title">Top phrases in 1-star reviews</div>
+        <ul class="keyword-list">
+          <li>
+            <span class="kw-phrase">waited 45 minutes</span>
+            <span class="kw-count">31 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">didn't explain billing</span>
+            <span class="kw-count">22 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">couldn't reach anyone</span>
+            <span class="kw-count">18 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">rushed through</span>
+            <span class="kw-count">16 mentions</span>
+          </li>
+          <li>
+            <span class="kw-phrase">insurance issues</span>
+            <span class="kw-count">14 mentions</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      <span class="insight__label">How to Use This</span>
+      Use the 5-star language directly in your Google Business Profile description and website homepage. Phrases like "gentle dentist," "we explain everything," and "no judgment" are the exact signals that searching patients — especially anxious ones — respond to when choosing a practice.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       SECTION 5: 90-DAY ACTION CHECKLIST
+  ════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="action-heading">
+    <h2 class="section-title" id="action-heading">
+      <span class="section-num">5.</span> Your 90-Day Action Plan
+    </h2>
+    <p class="section-sublabel">Prioritized tasks based on competitive gap size and estimated effort to implement. Start with Quick Wins to build momentum.</p>
+
+    <div class="action-tiers">
+
+      <!-- Quick Wins -->
+      <div class="tier tier--quick">
+        <div class="tier__header">
+          <span class="tier__badge">Quick Wins</span>
+          <span class="tier__timeframe">Week 1–2 &nbsp;·&nbsp; Low effort, high signal</span>
+        </div>
+        <div class="tier__body">
+          <ul class="checklist" aria-label="Quick win action items for weeks 1 through 2">
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Set up a 24-hour Google review response policy — respond to all new reviews within 24 hours, both positive and negative</span>
+            </li>
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Add "gentle dentist" and "we explain everything" to your Google Business Profile description — use the exact patient language from 5-star reviews</span>
+            </li>
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Audit your appointment confirmation flow — add an estimated wait time note so patients arrive with calibrated expectations</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Medium Term -->
+      <div class="tier tier--medium">
+        <div class="tier__header">
+          <span class="tier__badge">Medium-Term</span>
+          <span class="tier__timeframe">Month 1–2 &nbsp;·&nbsp; Structured effort required</span>
+        </div>
+        <div class="tier__body">
+          <ul class="checklist" aria-label="Medium-term action items for months 1 through 2">
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Launch a post-visit review request via SMS or email — target 2+ new reviews per week to begin closing the velocity gap with CrossTown Dental</span>
+            </li>
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Create a dedicated "Dental Implants" page on your website with procedure info, cost range, and FAQs — CrossTown is currently capturing this search traffic</span>
+            </li>
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Add same-day emergency appointment availability to your Google Business Profile and homepage — only 1 competitor currently claims this positioning</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Strategic -->
+      <div class="tier tier--strategic">
+        <div class="tier__header">
+          <span class="tier__badge">Strategic</span>
+          <span class="tier__timeframe">Month 2–3 &nbsp;·&nbsp; Investment with longer payoff</span>
+        </div>
+        <div class="tier__body">
+          <ul class="checklist" aria-label="Strategic action items for months 2 through 3">
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Test a teeth whitening promotion or bundle — Smile Studio ATX is winning this service segment in your market and accumulating reviews on it</span>
+            </li>
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Reach out to 2 primary care physicians in your area about referral partnerships — competitor reviews show a meaningful share of patients arrive via MD referral</span>
+            </li>
+            <li>
+              <span class="check-box" role="presentation" aria-hidden="true"></span>
+              <span>Brief your front desk team on the #1 complaint pattern across all practices — unexplained wait times — and build a simple wait acknowledgment script</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       REPORT FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="report-footer">
+
+    <div class="footer-cta">
+      <h2 class="footer-cta__heading">Want a report for your practice?</h2>
+      <p class="footer-cta__sub">We analyze your local competitors so you know exactly where to focus — no guesswork.</p>
+      <a class="btn-cta" href="https://dental.outerintel.com">Get My Free Dental Audit</a>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-meta">
+      <p class="footer-meta__disclaimer">
+        This report was prepared by Outer Intel. Data sourced from publicly available Google, Healthgrades, Zocdoc, and Yelp reviews.
+        Analysis reflects Q1 2025 data (Jan 1 – Mar 15, 2025). Competitor names and review counts are representative samples for
+        illustrative purposes.
+      </p>
+      <div class="footer-meta__brand">Outer<strong>Intel</strong></div>
+    </div>
+
+  </footer>
+
+</div><!-- /.page-wrap -->
+
+</body>
+</html>

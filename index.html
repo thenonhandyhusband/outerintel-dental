@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outer Intel — Dental Practice Competitive Intelligence</title>
+  <meta name="description" content="77% of dental patients read online reviews before choosing a practice. See exactly where nearby competitors are winning — and losing — on Google, Healthgrades, and Zocdoc. Free competitive audit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--accent);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 0 0 6px 6px;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 9999;
+      text-decoration: none;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0D1B35;
+      --navy-mid: #152747;
+      --slate: #1E3050;
+      --accent: #0D9488;
+      --accent-dark: #0F766E;
+      --white: #FFFFFF;
+      --gray-50: #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-300: #CBD5E1;
+      --gray-400: #94A3B8;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --max-w: 1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── UTILITY ─── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section { padding: 96px 0; }
+    .section-alt { background: var(--gray-50); }
+    .section-dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .section-white { background: var(--white); }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .section-dark h2 { color: var(--white); }
+    h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    p { line-height: 1.75; color: var(--gray-600); }
+    .section-dark p { color: rgba(255,255,255,0.72); }
+    .lead {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--gray-600);
+      max-width: 620px;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+      border: none;
+      position: relative;
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(13,148,136,0.3);
+    }
+    .btn-primary:active { transform: translateY(0); box-shadow: none; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: var(--white); }
+    .btn[aria-busy="true"] { opacity: 0.7; cursor: not-allowed; pointer-events: none; }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo-wrap {
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-wordmark {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .nav-wordmark .w1 { color: var(--white); }
+    .nav-wordmark .w2 { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover { color: white; background: rgba(255,255,255,0.06); }
+    .nav-link.active {
+      color: var(--accent);
+      background: rgba(13,148,136,0.1);
+    }
+    .nav-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      background: var(--navy);
+      padding: 100px 0 80px;
+      overflow: hidden;
+      position: relative;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(13,148,136,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-copy { max-width: 620px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(13,148,136,0.12);
+      border: 1px solid rgba(13,148,136,0.28);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 22px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .hero-link:hover { color: rgba(255,255,255,0.85); }
+    .hero-link svg { transition: transform 0.15s; }
+    .hero-link:hover svg { transform: translateX(3px); }
+    .hero-link:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.6);
+      border-radius: 4px;
+    }
+    #hero .btn-primary {
+      padding: 16px 32px;
+      font-size: 16px;
+    }
+
+    /* ─── STAT STRIP ─── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 64px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-strip-item {
+      background: rgba(255,255,255,0.04);
+      padding: 22px 24px;
+    }
+    .stat-strip-num {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .stat-strip-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    /* ─── SECTION 2 — COST ─── */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+    }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--gray-600);
+    }
+    .stat-source {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    /* ─── SECTION 3 — INSIGHT CARDS ─── */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .insight-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .insight-card:hover {
+      border-color: rgba(13,148,136,0.45);
+      box-shadow: 0 4px 24px rgba(13,148,136,0.08);
+    }
+    .insight-icon {
+      font-size: 26px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .insight-card h3 {
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .insight-card p { font-size: 14px; }
+
+    /* ─── SECTION 4 — LANGUAGE SPLIT ─── */
+    .lang-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+    .lang-col { padding: 32px 28px; }
+    .lang-col-without {
+      background: var(--white);
+      border-right: 1px solid var(--gray-200);
+    }
+    .lang-col-with {
+      background: var(--navy);
+    }
+    .lang-col-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .lang-col-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-without { background: var(--gray-400); }
+    .dot-with { background: var(--accent); }
+    .lang-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .lang-col-without .lang-col-title { color: var(--gray-400); }
+    .lang-col-with .lang-col-title { color: var(--accent); }
+
+    .lang-rows { display: flex; flex-direction: column; gap: 16px; }
+    .lang-row-item {
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .lang-col-without .lang-row-item {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      color: var(--gray-600);
+      font-style: italic;
+    }
+    .lang-col-with .lang-row-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.82);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .velocity-section {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .lang-col-with .velocity-section {
+      border-top-color: rgba(255,255,255,0.1);
+    }
+    .velocity-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .lang-col-without .velocity-label { color: var(--gray-400); }
+    .lang-col-with .velocity-label { color: rgba(255,255,255,0.4); }
+    .velocity-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .velocity-track {
+      flex: 1;
+      height: 8px;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .lang-col-without .velocity-track { background: var(--gray-100); }
+    .lang-col-with .velocity-track { background: rgba(255,255,255,0.08); }
+    .velocity-fill {
+      height: 100%;
+      border-radius: 100px;
+      transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .fill-without { background: var(--gray-300); width: 0; }
+    .fill-with { background: var(--accent); width: 0; }
+    .velocity-num {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .lang-col-without .velocity-num { color: var(--gray-600); }
+    .lang-col-with .velocity-num { color: var(--accent); }
+    .velocity-unit {
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .lang-col-without .velocity-unit { color: var(--gray-400); }
+    .lang-col-with .velocity-unit { color: rgba(255,255,255,0.4); }
+
+    .gap-callout-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+      align-items: stretch;
+    }
+    .gap-callout-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 22px 24px;
+      border-top: 3px solid var(--accent);
+    }
+    .gap-callout-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .gap-callout-label {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+    .gap-stat-callout {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .gap-stat-callout .num {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .gap-stat-callout .lbl {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ─── SECTION 5 — STEPS ─── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 48px 0;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: calc(16.66% + 20px);
+      width: calc(66.66% - 40px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gray-200), var(--accent), var(--gray-200));
+    }
+    .step-item { text-align: center; }
+    .step-number {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 8px var(--gray-50);
+      transition: box-shadow 0.2s;
+    }
+    .step-item:hover .step-number {
+      box-shadow: 0 0 0 12px rgba(13,148,136,0.1), 0 0 0 8px var(--gray-50);
+    }
+    .step-item h3 {
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .step-item p { font-size: 14px; }
+    .step-time {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── SECTION 6 — REPORT ─── */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 48px 0 36px;
+    }
+    .report-item {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .report-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(13,148,136,0.1);
+    }
+    .report-num {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .report-item h3 {
+      font-size: 15px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .report-item p { font-size: 13px; }
+
+    /* ─── SECTION 7 — SOCIAL PROOF ─── */
+    .beta-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .beta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(13,148,136,0.1);
+      border: 1px solid rgba(13,148,136,0.25);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .beta-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .slots-remaining {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+    }
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.08);
+      border-radius: 100px;
+      height: 6px;
+      width: 240px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 24%;
+      background: var(--accent);
+      border-radius: 100px;
+      transition: width 1.5s ease;
+    }
+    .progress-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .proof-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .proof-icon { font-size: 24px; margin-bottom: 14px; }
+    .proof-card h4 {
+      font-size: 15px;
+      color: white;
+      margin-bottom: 6px;
+      font-family: var(--sans);
+      font-weight: 600;
+    }
+    .proof-card p { font-size: 13px; }
+
+    .verticals-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .vertical-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .vertical-tag:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    .vertical-tag.current {
+      border-color: rgba(13,148,136,0.4);
+      color: var(--accent);
+      background: rgba(13,148,136,0.08);
+    }
+    .vertical-tag:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .vertical-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+
+    /* ─── SECTION 8 — SIGNUP ─── */
+    #signup { background: var(--gray-50); }
+    .signup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .signup-copy h2 { color: var(--navy); }
+    .signup-copy .lead { color: var(--gray-600); }
+    .signup-points {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .signup-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.55;
+    }
+    .check-icon {
+      width: 20px; height: 20px;
+      background: rgba(13,148,136,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .form-card:hover { box-shadow: 0 12px 50px rgba(0,0,0,0.1); }
+    .form-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .form-row { margin-bottom: 16px; }
+    .form-row-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    input, select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 16px;
+      color: var(--gray-800);
+      background: var(--white);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      min-height: 48px;
+    }
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.15);
+    }
+    input:invalid:not(:placeholder-shown) { border-color: #DC2626; }
+    input::placeholder { color: var(--gray-400); }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-submit { margin-top: 20px; }
+    .form-submit .btn { width: 100%; text-align: center; padding: 15px; font-size: 15px; }
+    .form-footnote {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-400);
+      font-style: italic;
+    }
+    .form-success {
+      display: none;
+      background: rgba(13,148,136,0.08);
+      border: 1px solid rgba(13,148,136,0.25);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    .form-success-icon { font-size: 36px; margin-bottom: 12px; }
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .form-success p { font-size: 14px; color: var(--gray-600); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      padding: 48px 0 36px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: white;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 6px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-links a.active { color: var(--accent); }
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--accent);
+      border-radius: 3px;
+    }
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ─── FOCUS / ACCESSIBILITY ─── */
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: 1fr; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .lang-split { grid-template-columns: 1fr; }
+      .lang-col-without { border-right: none; border-bottom: 1px solid var(--gray-200); }
+      .gap-callout-row { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+      .report-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-grid { grid-template-columns: 1fr; }
+      .signup-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row-split { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 2px; }
+      .nav-link { font-size: 13px; padding: 6px 8px; }
+    }
+    @media (max-width: 480px) {
+      .report-grid { grid-template-columns: 1fr; }
+      .nav-wordmark { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#signup" class="skip-link">Skip to sign up form</a>
+
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+<nav aria-label="Site header">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="https://outerintel.com" class="nav-brand" aria-label="Outer Intel home">
+        <div class="nav-logo-wrap" aria-hidden="true">
+          <svg width="48" height="38" viewBox="0 0 48 38" fill="none">
+            <rect x="1" y="1" width="26" height="20" rx="5" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <path d="M7 21 L3 27 L13 21" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" opacity="0.5"/>
+            <text x="4" y="10" font-size="5" fill="currentColor" opacity="0.6">★★★★★</text>
+            <rect x="4" y="13" width="14" height="2" rx="1" fill="currentColor" opacity="0.4"/>
+            <rect x="4" y="17" width="10" height="2" rx="1" fill="currentColor" opacity="0.3"/>
+            <rect x="20" y="10" width="26" height="20" rx="5" fill="rgba(13,148,136,0.08)" stroke="currentColor" stroke-width="2"/>
+            <path d="M40 30 L45 36 L36 30" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <rect x="24" y="20" width="3" height="6" rx="0.5" fill="currentColor" opacity="0.35"/>
+            <rect x="29" y="17" width="3" height="9" rx="0.5" fill="currentColor" opacity="0.6"/>
+            <rect x="34" y="19" width="3" height="7" rx="0.5" fill="currentColor" opacity="0.45"/>
+            <rect x="39" y="15" width="3" height="11" rx="0.5" fill="currentColor" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="nav-wordmark"><span class="w1">Outer</span><span class="w2">Intel</span></div>
+      </a>
+      <nav aria-label="Verticals">
+        <div class="nav-links">
+          <a href="https://medspa.outerintel.com" class="nav-link">Med Spa</a>
+          <a href="https://dental.outerintel.com" class="nav-link active" aria-current="page">Dental</a>
+          <a href="https://chiro.outerintel.com" class="nav-link">Chiropractic</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- ═══════════════════════════════════════
+     SECTION 1 — HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">DENTAL PRACTICE INTELLIGENCE</div>
+      <h1 class="hero-headline">
+        Your Competitors' Patients<br/>
+        Are Talking.<br/>
+        <em>Are You Listening?</em>
+      </h1>
+      <p class="hero-sub">Outer Intel shows independent dental practices exactly where nearby competitors are winning — and losing — on Google, Healthgrades, and Zocdoc reviews. Free competitive intelligence report.</p>
+      <div class="hero-actions">
+        <a href="#signup" class="btn btn-primary">Claim My Free Dental Audit</a>
+        <a href="https://dental.outerintel.com/sample_report/" class="hero-link" aria-label="See a sample dental report">
+          See a sample report
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="stat-strip" role="list" aria-label="Key dental industry statistics">
+      <div class="stat-strip-item" role="listitem">
+        <div class="stat-strip-num">77%</div>
+        <div class="stat-strip-label">of dental patients read online reviews before choosing</div>
+      </div>
+      <div class="stat-strip-item" role="listitem">
+        <div class="stat-strip-num">2.1×</div>
+        <div class="stat-strip-label">more new patient inquiries for practices rated 4.8+</div>
+      </div>
+      <div class="stat-strip-item" role="listitem">
+        <div class="stat-strip-num">#1</div>
+        <div class="stat-strip-label">Top patient complaint: wait times &amp; front desk experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 2 — THE COST OF BLIND SPOTS
+═══════════════════════════════════════ -->
+<section class="section section-alt" id="cost">
+  <div class="container">
+    <div class="section-label">THE COST OF MISSING DATA</div>
+    <h2>You're Flying Blind While Competitors Post 5-Star Reviews</h2>
+    <p class="lead">When a patient chooses a competitor, you lose the lifetime value of that relationship — often $3,000–$8,000 per patient. And you never know why.</p>
+
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-number" data-target="73" data-suffix="%">73%</div>
+        <div class="stat-desc">of patients who switched practices cited "better reviews" as the primary reason for making the move.</div>
+        <div class="stat-source">Source: PatientPop 2023</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="4" data-suffix=".2×">4.2×</div>
+        <div class="stat-desc">more likely a patient books with a practice that responds to negative reviews vs. one that ignores them.</div>
+        <div class="stat-source">Source: BrightLocal 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">18 <span style="font-size: 28px; font-weight: 600;">mo</span></div>
+        <div class="stat-desc">average time practices realize they've lost market share to a competitor — well after the damage is done.</div>
+        <div class="stat-source">Source: Dental Economics 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 — REVIEW INTELLIGENCE GAP
+═══════════════════════════════════════ -->
+<section class="section section-dark" id="intelligence-gap">
+  <div class="container">
+    <div class="section-label">THE REVIEW INTELLIGENCE GAP</div>
+    <h2>Patients Are Research-Mode.<br/>Most Practices Are Gut-Mode.</h2>
+    <p class="lead" style="color: rgba(255,255,255,0.65); max-width: 580px; margin-bottom: 0;">The reviews are out there. Your competitors' weaknesses are visible to everyone — except you. Outer Intel reads the signals you're missing.</p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <span class="insight-icon" aria-hidden="true">🔍</span>
+        <h3>The Hidden Churn Driver</h3>
+        <p>Patients rarely tell you why they left. They tell Google. We read it so you don't have to — and translate it into patterns you can act on.</p>
+      </div>
+      <div class="insight-card">
+        <span class="insight-icon" aria-hidden="true">📊</span>
+        <h3>Service-Level Precision</h3>
+        <p>We don't just track star ratings. We surface what patients are saying about specific procedures — implants, cleanings, cosmetic work, and wait times.</p>
+      </div>
+      <div class="insight-card">
+        <span class="insight-icon" aria-hidden="true">🎯</span>
+        <h3>Competitor Blind Spots</h3>
+        <p>Every 5-star review your competitor earns is a data point. We aggregate them into intelligence you can act on this quarter — before they compound further.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 — WHAT YOU'RE MISSING
+═══════════════════════════════════════ -->
+<section class="section section-white" id="missing">
+  <div class="container">
+    <div class="section-label">WHAT YOUR PATIENTS ARE REALLY SAYING</div>
+    <h2>The Gap Between What You Know and What's Actually Being Said</h2>
+    <p class="lead">Raw reviews are noise. Outer Intel transforms competitor chatter into a clear picture of where you're vulnerable and where you can win.</p>
+
+    <div class="lang-split" role="region" aria-label="Without vs. with Outer Intel comparison">
+
+      <!-- LEFT: Without Outer Intel -->
+      <div class="lang-col lang-col-without">
+        <div class="lang-col-header">
+          <div class="lang-col-dot dot-without"></div>
+          <div class="lang-col-title">Without Outer Intel</div>
+        </div>
+        <div class="lang-rows">
+          <div class="lang-row-item">"front desk was rude"</div>
+          <div class="lang-row-item">"had to wait 45 minutes"</div>
+          <div class="lang-row-item">"didn't explain the procedure"</div>
+        </div>
+        <div class="velocity-section">
+          <div class="velocity-label">Signal strength</div>
+          <div class="velocity-bar-row">
+            <div class="velocity-track">
+              <div class="velocity-fill fill-without" data-width="25%"></div>
+            </div>
+            <div class="velocity-num">25</div>
+            <div class="velocity-unit">%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: With Outer Intel -->
+      <div class="lang-col lang-col-with">
+        <div class="lang-col-header">
+          <div class="lang-col-dot dot-with"></div>
+          <div class="lang-col-title">With Outer Intel</div>
+        </div>
+        <div class="lang-rows">
+          <div class="lang-row-item">Competitor patients cite wait times 3.2× more than yours — addressable with scheduling software</div>
+          <div class="lang-row-item">Front desk complaints drive 41% of 1-star reviews at CrossTown Dental — your opening</div>
+          <div class="lang-row-item">Cosmetic inquiry abandonment spiked after Dr. Park left — patients are actively shopping</div>
+        </div>
+        <div class="velocity-section">
+          <div class="velocity-label">Signal strength</div>
+          <div class="velocity-bar-row">
+            <div class="velocity-track">
+              <div class="velocity-fill fill-with" data-width="85%"></div>
+            </div>
+            <div class="velocity-num">85</div>
+            <div class="velocity-unit">%</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gap-callout-row">
+      <div class="gap-callout-card">
+        <div class="gap-callout-num">14</div>
+        <div class="gap-callout-label">missed competitive signals per month, on average, for practices not tracking competitor reviews</div>
+      </div>
+      <div class="gap-stat-callout">
+        <div class="num">$3K–$8K</div>
+        <div class="lbl">lifetime value lost per patient who chose a competitor — often because of intelligence you could have acted on</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 5 — HOW IT WORKS
+═══════════════════════════════════════ -->
+<section class="section section-alt" id="how-it-works">
+  <div class="container">
+    <div class="section-label">THE PROCESS</div>
+    <h2>From Raw Reviews to a Competitive Playbook</h2>
+    <p class="lead">Three steps. No software to install. No subscription to start.</p>
+
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-number" aria-hidden="true">1</div>
+        <h3>Submit your practice</h3>
+        <p>Tell us your practice name, city, and top 3 competitor names — or we'll find them for you. The whole process takes 2 minutes.</p>
+        <div class="step-time">Takes 2 minutes</div>
+      </div>
+      <div class="step-item">
+        <div class="step-number" aria-hidden="true">2</div>
+        <h3>We run the intelligence</h3>
+        <p>Our AI scrapes and classifies thousands of reviews across Google, Healthgrades, Zocdoc, and Yelp — categorizing by service type, sentiment, and recency.</p>
+        <div class="step-time">48-hour analysis</div>
+      </div>
+      <div class="step-item">
+        <div class="step-number" aria-hidden="true">3</div>
+        <h3>Get your report</h3>
+        <p>Within 48 hours, you receive a structured competitive intelligence report with your top opportunities and risks. No software to install.</p>
+        <div class="step-time">Delivered to inbox</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 6 — DELIVERABLE
+═══════════════════════════════════════ -->
+<section class="section section-white" id="deliverable">
+  <div class="container">
+    <div class="section-label">WHAT YOU'LL RECEIVE</div>
+    <h2>Your Dental Competitive Intelligence Report</h2>
+    <p class="lead">A structured report designed for practice owners — not data analysts. Every insight has a clear action.</p>
+
+    <div class="report-grid">
+      <div class="report-item">
+        <div class="report-num">01</div>
+        <h3>Review Velocity Map</h3>
+        <p>How fast competitors are accumulating new reviews, week over week, by service category — so you see momentum shifts before they become a market share gap.</p>
+      </div>
+      <div class="report-item">
+        <div class="report-num">02</div>
+        <h3>Sentiment Breakdown</h3>
+        <p>Top positive and negative themes across all nearby competitor practices — sorted by frequency and weighted by recency.</p>
+      </div>
+      <div class="report-item">
+        <div class="report-num">03</div>
+        <h3>Service Gap Analysis</h3>
+        <p>Which services are drawing the most praise at competitors that you also offer — or should offer. Implants, cosmetics, invisalign, and more.</p>
+      </div>
+      <div class="report-item">
+        <div class="report-num">04</div>
+        <h3>Front Desk Risk Flags</h3>
+        <p>Staff-related complaints that are costing competitors patients — and warning signs to watch in your own reviews before they compound.</p>
+      </div>
+      <div class="report-item">
+        <div class="report-num">05</div>
+        <h3>Keyword Opportunity Grid</h3>
+        <p>The exact phrases patients use to describe ideal dental experiences — ready for your website, Google Business profile, and patient communication copy.</p>
+      </div>
+      <div class="report-item">
+        <div class="report-num">06</div>
+        <h3>90-Day Action Checklist</h3>
+        <p>Prioritized recommendations you can act on immediately — from quick wins to strategic repositions — ranked by effort and estimated patient impact.</p>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="https://dental.outerintel.com/sample_report/" class="btn btn-outline">Preview a Sample Report</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 7 — SOCIAL PROOF
+═══════════════════════════════════════ -->
+<section class="section section-dark" id="who-its-for">
+  <div class="container">
+    <div class="section-label">WHO THIS IS FOR</div>
+    <h2>Built for Independent Dental Practices Ready to Compete</h2>
+
+    <div class="beta-badge-row">
+      <div class="beta-badge" aria-label="Beta availability status">12 of 50 beta slots remaining</div>
+      <div>
+        <div class="progress-bar-wrap" role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" aria-label="Beta slots filled: 24%">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <div class="progress-label">24% of beta capacity filled</div>
+      </div>
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-icon" aria-hidden="true">🏥</div>
+        <h4>Single-Location Practices</h4>
+        <p>You don't have a marketing team. You need intelligence that's already distilled into action — not a data dump to interpret yourself.</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon" aria-hidden="true">📍</div>
+        <h4>Multi-Location Groups</h4>
+        <p>Compare performance across your own locations and benchmark against the top regional competitors. See where each location stands and why.</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon" aria-hidden="true">📈</div>
+        <h4>New Patient Growth Focus</h4>
+        <p>Every new patient insight in the report maps directly to acquisition and retention levers. Know which signals to pull — and in what order.</p>
+      </div>
+    </div>
+
+    <div class="verticals-row" aria-label="Other practice verticals">
+      <a href="https://medspa.outerintel.com" class="vertical-tag">
+        <div class="vertical-dot" aria-hidden="true"></div>
+        Med Spa
+      </a>
+      <span class="vertical-tag current" aria-current="page">
+        <div class="vertical-dot" aria-hidden="true"></div>
+        Dental
+      </span>
+      <a href="https://chiro.outerintel.com" class="vertical-tag">
+        <div class="vertical-dot" aria-hidden="true"></div>
+        Chiropractic
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 8 — SIGNUP FORM
+═══════════════════════════════════════ -->
+<section class="section" id="signup">
+  <div class="container">
+    <div class="section-label">REQUEST YOUR FREE AUDIT</div>
+    <div class="signup-grid">
+
+      <!-- Left: copy -->
+      <div class="signup-copy">
+        <h2>Claim Your Free Dental Competitive Audit</h2>
+        <p class="lead">Submit your practice details and we'll deliver a full competitive intelligence report within 48 business hours — no calls, no commitment, no software to install.</p>
+        <div class="signup-points" role="list" aria-label="What you'll receive">
+          <div class="signup-point" role="listitem">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <span>Review velocity data — see how fast competitors are gaining ground across service categories</span>
+          </div>
+          <div class="signup-point" role="listitem">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <span>Sentiment breakdown — what's driving 5-star and 1-star reviews at your top competitors</span>
+          </div>
+          <div class="signup-point" role="listitem">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <span>Service gap analysis — which procedures are earning competitors the most trust with patients</span>
+          </div>
+          <div class="signup-point" role="listitem">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <span>Competitor keyword map — the exact language patients use that your website and GBP should own</span>
+          </div>
+          <div class="signup-point" role="listitem">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <span>90-day action checklist — prioritized next steps ranked by effort and new patient impact</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form card -->
+      <div class="form-card">
+        <div class="form-title">Start Your Free Audit</div>
+
+        <iframe data-tally-src="https://tally.so/embed/5BLABQ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="826" frameborder="0" marginheight="0" marginwidth="0" title="Outer Intel — Free Audit Request"></iframe>
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+        <div class="form-footnote">What patients say when you're not in the room.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Outer<span>Intel</span></div>
+        <div class="footer-tagline">Competitive reputation intelligence for independent practices.</div>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://outerintel.com">Home</a>
+        <a href="https://medspa.outerintel.com">Med Spa</a>
+        <a href="https://dental.outerintel.com" class="active" aria-current="page">Dental</a>
+        <a href="https://chiro.outerintel.com">Chiropractic</a>
+        <a href="https://dental.outerintel.com/sample_report/">Sample Report</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Outer Intel. Competitive intelligence for independent practices.
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ─────────────────────────────────────────────────
+     Counter animation — fires once on first scroll
+     into view via IntersectionObserver
+  ───────────────────────────────────────────────── */
+  (function () {
+    const counters = document.querySelectorAll('[data-target]');
+    if (!counters.length) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateCounter = (el) => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = prefersReduced ? 0 : 1200;
+      const start = performance.now();
+
+      const step = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
+        // format: if target is integer show integer, else 1 decimal
+        const formatted = Number.isInteger(target)
+          ? Math.round(value)
+          : value.toFixed(1);
+        el.textContent = formatted + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+
+      if (prefersReduced) {
+        el.textContent = target + suffix;
+      } else {
+        requestAnimationFrame(step);
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach((el) => observer.observe(el));
+  })();
+
+
+  /* ─────────────────────────────────────────────────
+     Velocity bars — animate width on scroll
+  ───────────────────────────────────────────────── */
+  (function () {
+    const bars = document.querySelectorAll('.velocity-fill[data-width]');
+    if (!bars.length) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (prefersReduced) {
+            el.style.transition = 'none';
+          }
+          el.style.width = el.dataset.width;
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    bars.forEach((el) => observer.observe(el));
+  })();
+
+
+  /* ─────────────────────────────────────────────────
+     Form submission handler
+  ───────────────────────────────────────────────── */
+  (function () {
+    const form = document.getElementById('dental-audit-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successPanel = document.getElementById('form-success');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Client-side validation
+      const requiredFields = form.querySelectorAll('[required]');
+      let valid = true;
+      requiredFields.forEach((field) => {
+        if (!field.value.trim()) {
+          field.focus();
+          valid = false;
+        }
+      });
+      if (!valid) return;
+
+      // Loading state
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        // TODO: replace with your form submission endpoint
+        // const data = new FormData(form);
+        // await fetch('/api/dental-audit', { method: 'POST', body: data });
+
+        // Simulate async submission
+        await new Promise((resolve) => setTimeout(resolve, 800));
+
+        // Show success
+        form.style.display = 'none';
+        successPanel.style.display = 'block';
+        successPanel.focus();
+      } catch (err) {
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.textContent = 'Claim My Free Dental Audit →';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
